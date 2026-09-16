@@ -30,3 +30,29 @@ Voor de responsive layout heb ik informatie gebruikt van MDN over responsive web
 
 Bron: MDN - Responsive web design
 https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design?utm_source=chatgpt.com
+
+## Responsive test
+
+Ik heb de website getest op drie schermbreedtes:
+
+- Mobiel: 400/480px
+- Tablet: 768px
+- Desktop: 1024px
+
+Op alle drie de schermgroottes bleef de website leesbaar en bruikbaar. Er ontstond geen horizontale scrollbar en de navigatie bleef werken.
+
+## HTML-validatie
+
+De HTML-bestanden van de website zijn gecontroleerd met de W3C/Nu HTML Checker.
+
+- index.html: geen errors of warnings
+- projects.html: geen errors of warnings
+- blog.html: geen errors of warnings
+
+## Toegankelijkheid
+
+De HTML en CSS staan in aparte bestanden en de bestandsstructuur is zo opgebouwd dat nieuwe projecten en blogposts later eenvoudig kunnen worden toegevoegd.
+
+Op dit moment gebruik ik geen afbeeldingen. Daarom zijn alt-teksten nog niet van toepassing.
+
+Voor de tekst gebruik ik een donker lettertype op een lichte achtergrond, zodat er voldoende contrast is en de inhoud goed leesbaar blijft.
