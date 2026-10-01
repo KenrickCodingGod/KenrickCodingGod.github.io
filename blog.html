@@ -6,11 +6,9 @@
     <title>Blog | Kenrick Kock</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
 <header>
-    <nav>
+    <nav aria-label="Hoofdnavigatie">
         <a href="index.html">Whoami</a>
         <a href="projects.html">Projecten</a>
         <a href="blog.html">Blog</a>
@@ -21,16 +19,33 @@
     <section>
         <h1>Blog</h1>
 
-        <article>
-            <h2>Eerste blogpost</h2>
-            <p>Hier komt mijn eerste blogpost.</p>
+        <article class="blog-card">
+            <h2>Mijn ontwikkeling als Software Engineering student</h2>
+            <p>
+                Tijdens mijn opleiding werk ik aan verschillende projecten waarin ik
+                steeds meer leer over softwareontwikkeling, databases en webtechnologie.
+            </p>
+
+            <div id="blog-extra" hidden>
+                <p>
+                    Bij projecten zoals Campus EventDesk heb ik gewerkt aan het modelleren
+                    en opzetten van een database. Bij GymBuddy heb ik ervaring opgedaan met
+                    AI en lokale taalmodellen. Met deze portfoliosite oefen ik met HTML,
+                    CSS en JavaScript. Door verschillende soorten projecten te maken leer
+                    ik niet alleen programmeren, maar ook hoe ik keuzes moet uitleggen en
+                    mijn werk overzichtelijk kan presenteren.
+                </p>
+            </div>
+
+            <button id="read-more-button" type="button" aria-expanded="false"
+                    aria-controls="blog-extra">Lees meer</button>
         </article>
     </section>
 </main>
 
 <footer>
-    <p>Kenrick Kock - 2026/2027 HBO- ICT</p>
+    <p>Kenrick Kock - 2026/2027 HBO-ICT</p>
 </footer>
-
+<script src="js/blog.js"></script>
 </body>
 </html>

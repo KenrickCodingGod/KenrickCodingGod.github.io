@@ -6,10 +6,12 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    color: #222;
 }
 
 header {
     padding: 20px;
+    border-bottom: 1px solid #ddd;
 }
 
 nav {
@@ -18,34 +20,127 @@ nav {
 }
 
 nav a {
-    text-decoration: none;
+    color: #222;
 }
 
 main {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px 20px;
 }
 
 footer {
     padding: 20px;
     text-align: center;
-}
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-    }
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
 }
 
-@media (max-width: 480px) {
-    main {
-        padding: 15px;
-    }
-}
 .profile-photo {
     max-width: 300px;
     width: 100%;
     height: auto;
     display: block;
-    margin-top: 20px;
+    margin: 20px 0 10px;
+}
+
+.page-section {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+}
+
+.project-controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.project-controls label,
+.form-field label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select,
+input,
+textarea,
+button {
+    font: inherit;
+}
+
+select,
+input,
+textarea {
+    width: 100%;
+    padding: 9px;
+}
+
+.project-controls select {
+    min-width: 200px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.project-card,
+.blog-card,
+.github-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.form-field {
+    margin-bottom: 18px;
+}
+
+.error-message {
+    min-height: 24px;
+    margin: 4px 0 0;
+    color: #a40000;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border: 2px solid #a40000;
+}
+
+button {
+    padding: 9px 16px;
+    cursor: pointer;
+}
+
+.form-status,
+.api-status {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.github-card {
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+    }
+
+    main {
+        padding: 20px 15px;
+    }
+
+    .project-controls {
+        flex-direction: column;
+    }
 }

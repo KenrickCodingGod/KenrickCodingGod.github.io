@@ -6,11 +6,9 @@
     <title>Projecten | Kenrick Kock</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
 <header>
-    <nav>
+    <nav aria-label="Hoofdnavigatie">
         <a href="index.html">Whoami</a>
         <a href="projects.html">Projecten</a>
         <a href="blog.html">Blog</a>
@@ -20,22 +18,46 @@
 <main>
     <section>
         <h1>Mijn projecten</h1>
+        <p>Hier staan een aantal projecten waaraan ik tijdens mijn opleiding heb gewerkt.</p>
 
-        <article>
-            <h2>Project 1</h2>
-            <p>Hier komt informatie over mijn eerste project.</p>
-        </article>
+        <div class="project-controls">
+            <div>
+                <label for="category-filter">Filter op categorie</label>
+                <select id="category-filter">
+                    <option value="all">Alle projecten</option>
+                    <option value="Web">Web</option>
+                    <option value="Database">Database</option>
+                    <option value="AI">AI</option>
+                </select>
+            </div>
 
-        <article>
-            <h2>Project 2</h2>
-            <p>Hier komt informatie over mijn tweede project.</p>
-        </article>
+            <div>
+                <label for="year-sort">Sorteer op jaar</label>
+                <select id="year-sort">
+                    <option value="newest">Nieuwste eerst</option>
+                    <option value="oldest">Oudste eerst</option>
+                </select>
+            </div>
+        </div>
+
+        <p id="project-count" aria-live="polite"></p>
+        <div id="project-list" class="project-grid"></div>
+    </section>
+
+    <section class="page-section" aria-labelledby="github-title">
+        <h2 id="github-title">Mijn GitHub</h2>
+        <p>Hieronder worden actuele openbare gegevens van mijn GitHub-profiel geladen.</p>
+        <div id="github-status" class="api-status" aria-live="polite">
+            GitHub-gegevens laden...
+        </div>
+        <div id="github-data"></div>
     </section>
 </main>
 
 <footer>
-    <p>Kenrick Kock - 2026/2027 HBO- ICT</p>
+    <p>Kenrick Kock - 2026/2027 HBO-ICT</p>
 </footer>
-
+<script src="js/projects.js"></script>
+<script src="js/github.js"></script>
 </body>
 </html>
