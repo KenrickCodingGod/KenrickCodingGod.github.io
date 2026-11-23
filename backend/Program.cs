@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PortfolioApi.Data;
 using PortfolioApi.Services;
@@ -23,7 +24,7 @@ if (string.IsNullOrWhiteSpace(connectionString))
     );
 }
 
-
+// Database configureren
 builder.Services.AddDbContext<PortfolioDbContext>(options =>
     options.UseSqlServer(
         connectionString,
@@ -35,6 +36,17 @@ builder.Services.AddDbContext<PortfolioDbContext>(options =>
     )
 );
 
+// ASP.NET Core Identity configureren
+builder.Services
+    .AddIdentity<IdentityUser, IdentityRole>(options =>
+    {
+        options.User.RequireUniqueEmail = true;
+    })
+    .AddEntityFrameworkStores<PortfolioDbContext>()
+    .AddDefaultTokenProviders();
+
+// Autorisatie
+builder.Services.AddAuthorization();
 
 // Services registreren
 builder.Services.AddScoped<ProjectService>();
@@ -49,17 +61,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Authenticatie en autorisatie
+app.UseAuthentication();
+app.UseAuthorization();
+
 // Controllers activeren
 app.MapControllers();
-
-// Database tabellen aanmaken met EF Core
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider
-        .GetRequiredService<PortfolioDbContext>();
-
-    await db.Database.EnsureCreatedAsync();
-}
 
 // Applicatie starten
 app.Run();
