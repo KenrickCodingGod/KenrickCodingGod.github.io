@@ -1,11 +1,10 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 using Microsoft.EntityFrameworkCore;
 using PortfolioApi.Models;
 
 namespace PortfolioApi.Data;
 
-public class PortfolioDbContext : IdentityDbContext<IdentityUser>
+public class PortfolioDbContext : DbContext
 {
     public PortfolioDbContext(
         DbContextOptions<PortfolioDbContext> options

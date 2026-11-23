@@ -24,7 +24,7 @@ if (string.IsNullOrWhiteSpace(connectionString))
     );
 }
 
-// Database configureren
+// Bestaande databasecontext voor projecten en blogposts
 builder.Services.AddDbContext<PortfolioDbContext>(options =>
     options.UseSqlServer(
         connectionString,
@@ -36,25 +36,37 @@ builder.Services.AddDbContext<PortfolioDbContext>(options =>
     )
 );
 
-// ASP.NET Core Identity configureren
+// Aparte databasecontext voor Identity
+builder.Services.AddDbContext<AuthDbContext>(options =>
+    options.UseSqlServer(
+        connectionString,
+        sqlOptions => sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(10),
+            errorNumbersToAdd: null
+        )
+    )
+);
+
+// Identity configureren
 builder.Services
     .AddIdentity<IdentityUser, IdentityRole>(options =>
     {
         options.User.RequireUniqueEmail = true;
     })
-    .AddEntityFrameworkStores<PortfolioDbContext>()
+    .AddEntityFrameworkStores<AuthDbContext>()
     .AddDefaultTokenProviders();
 
 // Autorisatie
 builder.Services.AddAuthorization();
 
-// Services registreren
+// Services
 builder.Services.AddScoped<ProjectService>();
 builder.Services.AddScoped<BlogpostService>();
 
 var app = builder.Build();
 
-// Swagger UI
+// Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -65,8 +77,8 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Controllers activeren
+// Controllers
 app.MapControllers();
 
-// Applicatie starten
+// Start applicatie
 app.Run();
